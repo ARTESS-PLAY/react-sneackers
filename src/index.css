@@ -1,0 +1,22 @@
+@import 'macro-css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Inter';
+}
+
+body{
+  background: #E7F6FF;
+  min-height: 100vh;
+}
+
+.main-section{
+  background-color: white;
+  max-width: 1080px;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 20px;
+}

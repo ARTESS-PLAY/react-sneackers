@@ -1,0 +1,36 @@
+.promo_slider__content__slide{
+    overflow: hidden;
+    img{
+        width: 67%;
+        object-fit: cover;
+    }
+    .promo_slider__content__slide__text{
+        width: 33%;
+        background: #F4EFE9;
+        border-radius: 20px 0 0 20px;
+        padding-left: 50px;
+        p{
+            font-weight: 700;
+            font-size: 38px;
+            word-wrap: break-word;
+            margin-bottom: 10px;
+            span{
+                color: #8BB43C;
+            }
+        }
+        a{
+            text-decoration: none;
+            background: #A5D364;
+            border-radius: 110px;
+            width: 177.46px;
+            height: 47.09px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
