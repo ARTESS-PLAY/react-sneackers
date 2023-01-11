@@ -1,0 +1,51 @@
+.card{
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+    padding: 20px 30px;
+    position: relative;
+    .addToWish{
+        position: absolute;
+        cursor: pointer;
+        left: 36px;
+        top:30px;
+        img{
+            transition: 0.3s;
+            border-radius: 7px;
+            overflow: hidden;
+            &:hover{
+                box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+            }
+        }
+    }
+    >img{
+        width: 100%;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+    >p{
+        margin-bottom: 15px;
+        font-size: 14px;
+        flex-grow: 1;
+    }
+    .price_text{
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 13px;
+        text-transform: uppercase;
+        color: #BDBDBD;
+    }
+    .price{
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .addToCart{
+        cursor: pointer;
+        border-radius: 7px;
+        overflow: hidden;
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+        }
+    }
+}

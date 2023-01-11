@@ -1,0 +1,26 @@
+.bg{
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+}
+.cart{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background-color: white;
+    max-width: 385px;
+    width: 100%;
+    h2{
+        font-weight: 700;
+        font-size: 24px;
+        padding: 30px;
+    }
+}
+.cart__content{
+    flex-grow: 1;
+}
