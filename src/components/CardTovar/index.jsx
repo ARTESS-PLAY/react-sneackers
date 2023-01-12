@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import cl from './CardTovar.module.scss';
 
 
-function CardTovar() {  
+function CardTovar({title, price, imgUrl}) {  
     const [isAdded, setisAdded] = useState(false);
 
     const handlePlusClick = () =>{
@@ -14,12 +14,12 @@ function CardTovar() {
             <div className={cl.addToWish}>
                 <img src="/img/icons/add-wish.svg" alt="add-wish" />
             </div>
-            <img src="/img/image 5.jpg" alt="tovar" />
-            <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
+            <img src={imgUrl} alt="tovar" />
+            <p>{title}</p>
             <div className='d-flex flex-row justify-between w100p'>
                 <div>
                     <p className={cl.price_text}>Цена:</p>
-                    <p className={cl.price}>12 999 руб.</p>
+                    <p className={cl.price}>{price}</p>
                 </div>
                 <img onClick={handlePlusClick} src={`/img/icons/add-to-cart${isAdded ? '-active' : ''}.svg`} alt="add-to-cart" className={cl.addToCart}/>
             </div>
