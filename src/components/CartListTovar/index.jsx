@@ -4,25 +4,21 @@ import CartItem from '../CartItem';
 
 import cl from './CartListTovar.module.scss';
 
-function CartListTovar() {
+function CartListTovar({cartItems, onDeleteFromCart}) {
     return (
         <div className={cl.tovars}>
             <div className={cl.list_tovars}>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
-                <CartItem></CartItem>
+                {cartItems.map(el =>{
+                    return(
+                        <CartItem
+                            title={el.title}
+                            price={el.price}
+                            imgUrl={el.imgUrl}
+                            onDeleteFromCart={() => onDeleteFromCart(el)}
+                            key={el.id}
+                        />
+                    )
+                })}
             </div>
             <div className={cl.tovars_sum}>
                 <div className={cl.end_sum}>

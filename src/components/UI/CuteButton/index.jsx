@@ -2,12 +2,12 @@ import React from 'react';
 
 import cl from './CuteButton.module.scss';
 
-function CuteButton({children, link = undefined, arrowDirection = 'none', width = '100%'}) {
+function CuteButton({children, link = undefined, arrowDirection = 'none', width = '100%', onClick = undefined}) {
     return (
         <>
         {link
         ?   <a href={link} style={{width: width}} className={cl.cute_button + ` ${arrowDirection == 'left' ? cl.left : ''} ${arrowDirection == 'right' ? cl.right : ''}`}>{children}</a>
-        :   <button style={{width: width}} className={cl.cute_button + ` ${arrowDirection == 'left' ? cl.left : ''} ${arrowDirection == 'right' ? cl.right : ''}`}>{children}</button>
+        :   <button onClick={onClick} style={{width: width}} className={cl.cute_button + ` ${arrowDirection == 'left' ? cl.left : ''} ${arrowDirection == 'right' ? cl.right : ''}`}>{children}</button>
          }
         </>
         

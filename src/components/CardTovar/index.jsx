@@ -2,11 +2,16 @@ import React, {useState} from 'react';
 import cl from './CardTovar.module.scss';
 
 
-function CardTovar({title, price, imgUrl}) {  
+function CardTovar({title, price, imgUrl, onAddToCart, onDeleteFromCart}) {  
     const [isAdded, setisAdded] = useState(false);
 
     const handlePlusClick = () =>{
         setisAdded(prev => !prev)
+        if(!isAdded){
+            onAddToCart();
+        }else{
+            onDeleteFromCart()
+        }
     }
 
     return (

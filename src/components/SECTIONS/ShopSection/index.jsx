@@ -4,14 +4,17 @@ import ListTovar from '../../ListTovar';
 import cl from './ShopSection.module.scss'
 
 
-function ShopSection() {
+function ShopSection({onAddToCart, onDeleteFromCart}) {
     return (
         <section className={cl['shop-section']}>
             <div className="shop_title_and_search d-flex justify-between align-center">
                 <h2>Корзина</h2>
                 <SearchForm></SearchForm>
             </div>
-            <ListTovar></ListTovar>
+            <ListTovar 
+                onAddToCart={onAddToCart}
+                onDeleteFromCart={onDeleteFromCart}
+            />
         </section>
     );
 }

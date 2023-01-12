@@ -3,7 +3,7 @@ import CardTovar from '../CardTovar';
 
 import cl from './ListTovar.module.scss';
 
-function ListTovar() {
+function ListTovar({onAddToCart, onDeleteFromCart}) {
 const [items, setitems] = useState([]);
 
 useEffect(() => {
@@ -18,6 +18,9 @@ useEffect(() => {
                         title={el.title}
                         price={el.price}
                         imgUrl={el.imgUrl}
+                        onAddToCart={() => onAddToCart(el)}
+                        onDeleteFromCart={() => onDeleteFromCart(el)}
+                        key={el.id}
                     />)
                 })
             }
