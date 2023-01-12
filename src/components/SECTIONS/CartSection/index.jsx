@@ -1,5 +1,6 @@
 import React from 'react';
 import cl from './CartSection.module.scss';
+import CuteButton from '../../UI/CuteButton';
 
 
 function CartSection({child}) {
@@ -11,7 +12,7 @@ function CartSection({child}) {
                     {child}
                 </div>
             </section>
-        </div>
+        </div> 
     );
 }
 
