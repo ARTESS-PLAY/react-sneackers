@@ -21,3 +21,4 @@ function CartSection({child, onClickClose}) {
 }
 
 export default CartSection;
+
