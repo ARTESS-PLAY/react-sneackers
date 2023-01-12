@@ -8,7 +8,7 @@ import CartSection from './components/SECTIONS/CartSection';
 function App() {
   return (
     <div className='main-section'>
-      <CartSection></CartSection>
+      {/* <CartSection></CartSection> */}
       <Header></Header>
       <BannerSection></BannerSection>
       <ShopSection></ShopSection>
