@@ -3,6 +3,7 @@
     input{
         padding: 15px;
         padding-left: 45px;
+        padding-right: 40px;
         color: #C4C4C4;
         font-size: 14px;
         border: 1px solid #F3F3F3;
@@ -26,5 +27,14 @@
         left: 18px;
         top: 50%;
         transform: translate(0%, -50%);
+    }
+    img{
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translate(0%, -50%);
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
     }
 }

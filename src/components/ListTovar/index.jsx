@@ -1,30 +1,30 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import CardTovar from '../CardTovar';
 
 import cl from './ListTovar.module.scss';
 
-function ListTovar({onAddToCart, onDeleteFromCart}) {
-const [items, setitems] = useState([]);
+function ListTovar({onAddToCart, onDeleteFromCart, items, search}) {
 
-useEffect(() => {
-    fetch('https://63c035f4e262345656fa64bc.mockapi.io/items').then(res => res.json()).then(res => setitems(res))
-}, []);
+    const searchItems = items.filter(el => el.title.toLowerCase().includes(search.toLowerCase()));
 
     return (
-        <div className={cl.list_tovars}>
-            {
-                items.map(el =>{
-                    return (<CardTovar
-                        title={el.title}
-                        price={el.price}
-                        imgUrl={el.imgUrl}
-                        onAddToCart={() => onAddToCart(el)}
-                        onDeleteFromCart={() => onDeleteFromCart(el)}
-                        key={el.id}
-                    />)
-                })
-            }
-        </div>
+        <> 
+        {searchItems.length > 0
+            ?  <div className={cl.list_tovars}>
+                    {searchItems.map(el =>{
+                        return (<CardTovar
+                            title={el.title}
+                            price={el.price}
+                            imgUrl={el.imgUrl}
+                            onAddToCart={() => onAddToCart(el)}
+                            onDeleteFromCart={() => onDeleteFromCart(el)}
+                            key={el.id}
+                            />)
+                        })}
+                </div>
+            : <h2>Ничего не найдено :(</h2>
+        }
+        </>
     );
 }
 
