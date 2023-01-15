@@ -7,14 +7,9 @@ import axios from 'axios';
 import cl from './ShopSection.module.scss'
 
 
-function ShopSection({onAddToCart, onDeleteFromCart}) {
+function ShopSection({onAddToCart, onDeleteFromCart, items, onAddToFavorities, favorities, onDeleteFromFavorities}) {
 
-    const [items, setitems] = useState([]);
     const [search, setsearch] = useState('');
-
-    useEffect(() => {
-        axios.get('https://63c035f4e262345656fa64bc.mockapi.io/items').then(res => setitems(res.data));
-    }, []);
 
     return (
         <section className={cl['shop-section']}>
@@ -30,6 +25,8 @@ function ShopSection({onAddToCart, onDeleteFromCart}) {
                 onDeleteFromCart={onDeleteFromCart}
                 items={items}
                 search={search}
+                onAddToFavorities={onAddToFavorities}
+                onDeleteFromFavorities={onDeleteFromFavorities}
             />
         </section>
     );

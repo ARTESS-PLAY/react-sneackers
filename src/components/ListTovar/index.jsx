@@ -3,7 +3,7 @@ import CardTovar from '../CardTovar';
 
 import cl from './ListTovar.module.scss';
 
-function ListTovar({onAddToCart, onDeleteFromCart, items, search}) {
+function ListTovar({onAddToCart, onDeleteFromCart, items, onAddToFavorities, onDeleteFromFavorities, search = ''}) {
 
     const searchItems = items.filter(el => el.title.toLowerCase().includes(search.toLowerCase()));
 
@@ -18,6 +18,8 @@ function ListTovar({onAddToCart, onDeleteFromCart, items, search}) {
                             imgUrl={el.imgUrl}
                             onAddToCart={() => onAddToCart(el)}
                             onDeleteFromCart={() => onDeleteFromCart(el)}
+                            onAddToFavorities={() => onAddToFavorities(el)}
+                            onDeleteFromFavorities={() => onDeleteFromFavorities(el)}
                             key={el.id}
                             />)
                         })}
