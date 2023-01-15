@@ -1,8 +1,8 @@
 import React from 'react';
 import ListTovar from '../../components/ListTovar';
 
-function Favorites({onAddToCart, onDeleteFromCart, onAddToFavorities, onDeleteFromFavorities, items}) {
-    console.log(items);
+function Favorites({onAddToCart, onDeleteFromCart, onAddToFavorities, onDeleteFromFavorities, items, ...props}) {
+
     return (
         <div className="page__section">
             <h2>Закладки</h2>
@@ -12,6 +12,7 @@ function Favorites({onAddToCart, onDeleteFromCart, onAddToFavorities, onDeleteFr
                 items={items}
                 onAddToFavorities={onAddToFavorities}
                 onDeleteFromFavorities={onDeleteFromFavorities}
+                {...props}
             />
         </div>
     );

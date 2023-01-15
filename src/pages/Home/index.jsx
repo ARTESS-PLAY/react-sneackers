@@ -7,7 +7,9 @@ function Home({onDeleteFromCart,
     items,
     onAddToFavorities,
     favorities,
-    onDeleteFromFavorities
+    onDeleteFromFavorities,
+    cartItems,
+    isLoading
     }) {
     return (
         <div className='main-section'>          
@@ -18,7 +20,9 @@ function Home({onDeleteFromCart,
             onDeleteFromCart={onDeleteFromCart}
             onAddToFavorities={onAddToFavorities}
             favorities={favorities}
+            cartItems={cartItems}
             onDeleteFromFavorities={onDeleteFromFavorities}
+            isLoading={isLoading}
             />
         </div>
     );

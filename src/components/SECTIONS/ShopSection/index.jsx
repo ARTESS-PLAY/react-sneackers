@@ -7,8 +7,7 @@ import axios from 'axios';
 import cl from './ShopSection.module.scss'
 
 
-function ShopSection({onAddToCart, onDeleteFromCart, items, onAddToFavorities, favorities, onDeleteFromFavorities}) {
-
+function ShopSection({onAddToCart, onDeleteFromCart, items, onAddToFavorities, onDeleteFromFavorities, ...props}) {
     const [search, setsearch] = useState('');
 
     return (
@@ -27,6 +26,7 @@ function ShopSection({onAddToCart, onDeleteFromCart, items, onAddToFavorities, f
                 search={search}
                 onAddToFavorities={onAddToFavorities}
                 onDeleteFromFavorities={onDeleteFromFavorities}
+                {...props}
             />
         </section>
     );
