@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ProfileUI() {
     return (
-        <div className="header__UI__profile" style={{cursor: 'pointer'}}>
-            <img src="/img/icons/profile.svg" alt="profile" />
-        </div>
+        <Link to='/orders'>
+            <div className="header__UI__profile" style={{cursor: 'pointer'}}>
+                <img src="/img/icons/profile.svg" alt="profile" />
+            </div>
+        </Link>
     );
 }
 

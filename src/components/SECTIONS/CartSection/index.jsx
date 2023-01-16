@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cl from './CartSection.module.scss';
 import CartListTovar from '../../CartListTovar';
 import CartInfos from '../../CartInfos';
+import AppContext from '../../../context';
 
 
 function CartSection({onClickClose, onDeleteFromCart, cartItems}) {
+    const {orderDone} = useContext(AppContext);
     return (
         <div className={cl.bg} onClick={onClickClose}>
             <section className={cl.cart} onClick={(e) => e.stopPropagation()}>
@@ -19,9 +21,9 @@ function CartSection({onClickClose, onDeleteFromCart, cartItems}) {
                             cartItems={cartItems}
                         />
                     :   <CartInfos
-                            title={"Корзина пустая"}
-                            text={"Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}
-                            imgUrl={"/img/emptyCart.jpg"}
+                            title={orderDone ? 'Заказ оформлен!' : "Корзина пустая"}
+                            text={orderDone ? 'Ваш заказ #18 скоро будет передан курьерской доставке': "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}
+                            imgUrl={orderDone ? '/img/doneOrder.jpg' : "/img/emptyCart.jpg"}
                             onClickClose={onClickClose}
                         />
                     }

@@ -1,14 +1,20 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ContentLoader from "react-content-loader"
 import cl from './CardTovar.module.scss';
+import AppContext from '../../context';
 
 
-function CardTovar({title, price, imgUrl, onAddToCart, onDeleteFromCart, onAddToFavorities, onDeleteFromFavorities, added = false, favorited = false, isLoading = false}) {  
-    const [isAdded, setisAdded] = useState(added);
+function CardTovar({id, title, price, imgUrl, onAddToCart, onDeleteFromCart, onAddToFavorities, onDeleteFromFavorities, favorited = false, isLoading = false}) {  
     const [isFavorited, setisFavorited] = useState(favorited);
 
+    useEffect(()=>{
+        setisFavorited(favorited)
+    }, [favorited])
+
+    const {isItemAdded} = useContext(AppContext);
+    const isAdded = isItemAdded(id);
+
     const handlePlusClick = () =>{
-        setisAdded(prev => !prev)
         if(!isAdded){
             onAddToCart();
         }else{
