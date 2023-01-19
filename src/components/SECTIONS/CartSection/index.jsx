@@ -5,10 +5,10 @@ import CartInfos from '../../CartInfos';
 import AppContext from '../../../context';
 
 
-function CartSection({onClickClose, onDeleteFromCart, cartItems}) {
+function CartSection({onClickClose, onDeleteFromCart, cartItems, cartOpen}) {
     const {orderDone} = useContext(AppContext);
     return (
-        <div className={cl.bg} onClick={onClickClose}>
+        <div className={cl.bg + ` ${cartOpen ? cl.overlay_active : ''}`} onClick={onClickClose}>
             <section className={cl.cart} onClick={(e) => e.stopPropagation()}>
                 <div className="d-flex flex-row justify-between aling-center pb-30">
                     <h2>Корзина</h2>

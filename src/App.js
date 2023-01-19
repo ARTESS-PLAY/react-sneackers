@@ -100,7 +100,7 @@ function App() {
       for (let index = 0; index < cartItems.length; index++) {
         const el = cartItems[index];
         setorders(prev => [el, ...prev]);
-        await axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${el.id}`);
+        await axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${el.cartId || el.id}`);
         await axios.post('https://63c55756f80fabd877e625c5.mockapi.io/orders', el); 
       }
       setcartItems([]);
@@ -114,11 +114,12 @@ function App() {
   return (
     <AppContext.Provider value={{items, favorities, cartItems, isLoading, isItemAdded, createOrder, orderDone}}>
       <div className='main-section'>
-            {cartOpen && <CartSection
-              onClickClose={() => setcartOpen(false)}
-              onDeleteFromCart={onDeleteFromCart}
-              cartItems = {cartItems}
-            />}
+          <CartSection
+            onClickClose={() => setcartOpen(false)}
+            onDeleteFromCart={onDeleteFromCart}
+            cartItems = {cartItems}
+            cartOpen={cartOpen}
+          />
           <Header onClickCartClick={() => setcartOpen(true)} ></Header>
           <Routes>
             <Route index element={<Home
