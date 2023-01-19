@@ -15,11 +15,7 @@ function CardTovar({id, title, price, imgUrl, onAddToCart, onDeleteFromCart, onA
     const isAdded = isItemAdded(id);
 
     const handlePlusClick = () =>{
-        if(!isAdded){
-            onAddToCart();
-        }else{
-            onDeleteFromCart();
-        }
+        onAddToCart();
     }
 
     const handleFavoriteClick = () =>{

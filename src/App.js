@@ -43,11 +43,19 @@ function App() {
 
   const onAddToCart = (item) => {
     try {
-      if(cartItems.find(el => Number(el.id) === Number(item.id))){
-        onDeleteFromCart(item);
+      const cartEl = cartItems.find(el => Number(el.parentId) === Number(item.id));
+      if(cartEl){
+        console.log(cartEl);
+        console.log(item);
+        setcartItems(prev => prev.filter(el => Number(item.id) !== Number(el.parentId)))
+        axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${cartEl.cartId || cartEl.id}`);
+        
       }else{
-        setcartItems(prev => [...prev, item]);
-        axios.post('https://63c035f4e262345656fa64bc.mockapi.io/cart', item);
+        item.parentId = item.id;
+        axios.post('https://63c035f4e262345656fa64bc.mockapi.io/cart', item).then(res => {
+          item.cartId = res.data.id;
+          return item;
+        }).then(item => setcartItems(prev => [...prev, item]));
       }
       if(orderDone){
         setorderDone(false);
@@ -58,8 +66,9 @@ function App() {
   }
   const onDeleteFromCart = (el) => {  
     try {
+      console.log(el);
       setcartItems(prev => prev.filter(item => Number(item.id) !== Number(el.id)))
-      axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${el.id}`);
+      axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${el.cartId || el.id}`);
     } catch (error) {
       alert('Не удалось удалить из корзины')
       console.log(error)
@@ -86,7 +95,7 @@ function App() {
   }
 
   const isItemAdded = (id) =>{
-    return cartItems.some(obj => Number(obj.id) === Number(id));
+    return cartItems.some(obj => Number(obj.parentId) === Number(id));
   }
 
   const createOrder = async () =>{
