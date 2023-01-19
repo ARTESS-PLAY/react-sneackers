@@ -5,9 +5,9 @@ import AppContext from '../../context';
 
 import cl from './ListTovar.module.scss';
 
-function ListTovar({onAddToCart, onDeleteFromCart, items, onAddToFavorities, onDeleteFromFavorities, search = ''}) {
+function ListTovar({onAddToCart, onDeleteFromCart, items, onAddToFavorities, search = ''}) {
 
-    const {isLoading, favorities, cartItems} = React.useContext(AppContext);
+    const {isLoading, favorities} = React.useContext(AppContext);
 
     let searchItems = items.filter(el => el.title.toLowerCase().includes(search.toLowerCase()));
     if(items.length == 0){
@@ -25,11 +25,10 @@ function ListTovar({onAddToCart, onDeleteFromCart, items, onAddToFavorities, onD
                             onAddToCart={() => onAddToCart(el)}
                             onDeleteFromCart={() => onDeleteFromCart(el)}
                             onAddToFavorities={() => onAddToFavorities(el)}
-                            onDeleteFromFavorities={() => onDeleteFromFavorities(el)}
                             key={el.id ? el.id : index}
                             {...el}
                             isLoading={isLoading}
-                            favorited={favorities.some(obj => Number(obj.id) === Number(el.id))}
+                            favorited={favorities.some(obj => Number(obj.parentId || obj.id) === Number(el.parentId || el.id))}
                             />)
                         })}
                 </div>

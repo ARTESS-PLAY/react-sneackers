@@ -7,7 +7,6 @@ function Home({onDeleteFromCart,
     items,
     onAddToFavorities,
     favorities,
-    onDeleteFromFavorities,
     cartItems,
     isLoading
     }) {
@@ -17,11 +16,9 @@ function Home({onDeleteFromCart,
             <ShopSection
             items={items}
             onAddToCart={onAddToCart}
-            onDeleteFromCart={onDeleteFromCart}
             onAddToFavorities={onAddToFavorities}
             favorities={favorities}
             cartItems={cartItems}
-            onDeleteFromFavorities={onDeleteFromFavorities}
             isLoading={isLoading}
             />
         </div>

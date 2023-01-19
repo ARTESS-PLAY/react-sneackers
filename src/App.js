@@ -45,8 +45,6 @@ function App() {
     try {
       const cartEl = cartItems.find(el => Number(el.parentId) === Number(item.id));
       if(cartEl){
-        console.log(cartEl);
-        console.log(item);
         setcartItems(prev => prev.filter(el => Number(item.id) !== Number(el.parentId)))
         axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${cartEl.cartId || cartEl.id}`);
         
@@ -66,7 +64,6 @@ function App() {
   }
   const onDeleteFromCart = (el) => {  
     try {
-      console.log(el);
       setcartItems(prev => prev.filter(item => Number(item.id) !== Number(el.id)))
       axios.delete(`https://63c035f4e262345656fa64bc.mockapi.io/cart/${el.cartId || el.id}`);
     } catch (error) {
@@ -77,20 +74,20 @@ function App() {
 
   const onAddToFavorities = (item) => {
     try {
-      setfavorities(prev => [...prev, item]);
-      axios.post('https://63c55756f80fabd877e625c5.mockapi.io/favorities', item);
+      const favEl = favorities.find(el => Number(el.parentId) === Number(item.parentId || item.id));
+      if(favEl){
+        setfavorities(prev => prev.filter(el => Number(item.parentId || item.id) !== Number(el.parentId)))
+        axios.delete(`https://63c55756f80fabd877e625c5.mockapi.io/favorities/${favEl.favId || favEl.id}`);
+        
+      }else{
+        item.parentId = item.id;
+        axios.post('https://63c55756f80fabd877e625c5.mockapi.io/favorities/', item).then(res => {
+          item.favId = res.data.id;
+          return item;
+        }).then(item => setfavorities(prev => [...prev, item]));
+      }
     } catch (error) {
-      alert("Не удалось добавить в избранные")
-      console.log(error)
-    }
-  }
-  const onDeleteFromFavorities = (el) => {
-    try {
-      setfavorities(prev => prev.filter(item => Number(item.id) !== Number(el.id)))
-      axios.delete(`https://63c55756f80fabd877e625c5.mockapi.io/favorities/${el.id}`);
-    } catch (error) {
-      alert("Не удалось удалить из избарнных")
-      console.log(error)
+      alert(error)
     }
   }
 
@@ -129,7 +126,6 @@ function App() {
                                           onAddToCart={onAddToCart}
                                           items={items}
                                           onAddToFavorities={onAddToFavorities}
-                                          onDeleteFromFavorities={onDeleteFromFavorities}
                                           favorities={favorities}
                                           cartItems={cartItems}
                                           isLoading={isLoading}
@@ -140,16 +136,13 @@ function App() {
                                                   onAddToCart={onAddToCart}
                                                   items={favorities}
                                                   onAddToFavorities={onAddToFavorities}
-                                                  onDeleteFromFavorities={onDeleteFromFavorities}
                                                   />
             }/>
             <Route path='/orders' element={
                                           <History
-                                            onDeleteFromCart={onDeleteFromCart}
                                             onAddToCart={onAddToCart}
                                             items={orders}
                                             onAddToFavorities={onAddToFavorities}
-                                            onDeleteFromFavorities={onDeleteFromFavorities}
                                           />   
             }/>  
             <Route path='*' element={<DefaultPage/>}/>

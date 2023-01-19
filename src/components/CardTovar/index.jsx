@@ -4,7 +4,7 @@ import cl from './CardTovar.module.scss';
 import AppContext from '../../context';
 
 
-function CardTovar({id, title, price, imgUrl, onAddToCart, onDeleteFromCart, onAddToFavorities, onDeleteFromFavorities, favorited = false, isLoading = false}) {  
+function CardTovar({id, title, price, imgUrl, onAddToCart, onAddToFavorities, favorited = false, isLoading = false}) {  
     const [isFavorited, setisFavorited] = useState(favorited);
 
     useEffect(()=>{
@@ -20,11 +20,7 @@ function CardTovar({id, title, price, imgUrl, onAddToCart, onDeleteFromCart, onA
 
     const handleFavoriteClick = () =>{
         setisFavorited(prev => !prev)
-        if(!isFavorited){
-            onAddToFavorities();
-        }else{
-            onDeleteFromFavorities();
-        }
+        onAddToFavorities();
     }
 
     return (
