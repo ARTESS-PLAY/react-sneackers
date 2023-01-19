@@ -56,7 +56,7 @@ function CardTovar({id, title, price, imgUrl, onAddToCart, onDeleteFromCart, onA
                 <div className='d-flex flex-row justify-between w100p'>
                     <div>
                         <p className={cl.price_text}>Цена:</p>
-                        <p className={cl.price}>{price}</p>
+                        <p className={cl.price}>{price} руб.</p>
                     </div>
                     <img onClick={handlePlusClick} src={`/img/icons/add-to-cart${isAdded ? '-active' : ''}.svg`} alt="add-to-cart" className={cl.addToCart}/>
                 </div>

@@ -8,7 +8,7 @@ function CartItem({title, price, imgUrl, onDeleteFromCart}) {
             <img src={imgUrl} alt="sneackers" />
             <div className={cl.text + " d-flex flex-column"}>
                 <p className={cl.title}>{title}</p>
-                <p className={cl.price}>{price}</p>
+                <p className={cl.price}>{price} руб.</p>
             </div>
             <img className={cl.close} src="./img/icons/close.svg" alt="delete" onClick={onDeleteFromCart}/>
         </div>
